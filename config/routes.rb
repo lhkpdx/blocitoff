@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-  devise_for :users
-  root to: "welcome#index"
+  match '/users', to: 'users#index',   via: 'get'
+  match '/users/:id', to: 'users#show', via: 'get'
+  devise_for :users, :path_prefix => 'd'
+  resources :users, :only => [:show]
+  get '/users' => "users#show", as: :user_root
+  root to: "users#show"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

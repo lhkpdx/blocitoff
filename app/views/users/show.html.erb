@@ -1,0 +1,9 @@
+<h2>Profile page for <%= @user.username %></h2>
+<div class="container"
+  <div class="row">
+    <ul>
+      <li>You've been a member since <%= time_ago_in_words(@user.created_at) %> ago.</li>
+      <li>Your current email address:  <%= @user.email %></li>
+    </ul>
+  </div>
+</div>
