@@ -1,5 +1,7 @@
-<p>Welcome <%= @email %>!</p>
+<p>Welcome to Blocitoff!<%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Please confirm your account email through the link below.  Note that you will not
+  have access to your newly created account until this happens.
+</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'Click here to confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>

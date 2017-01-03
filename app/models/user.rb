@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -18,5 +19,13 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  validate :validate_username
+
+def validate_username
+  if User.where(email: username).exists?
+    errors.add(:username, :invalid)
+  end
+end
 
 end

@@ -7,10 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <div class="container-fluid">
+    <nav class="navbar nav-tabs">
+      <ul class="nav nav-pills">
+        <li role="presentation" class="active"><%= link_to "Home", root_path %></li>
+        <li role="presentation"><%= render 'devise/menu/registration_items' %></li>
+        <li role="presentation"><%= render 'devise/menu/login_items' %></li>
+        <li role="presentation" class="navbar-text navbar-right"><% if user_signed_in? %><%= "You are logged in as #{current_user.username}" %><% end %></li>
+      </ul>
+    </nav>
 
-<%= yield %>
-
+      <%= yield %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+   </div>
 </body>
 </html>
