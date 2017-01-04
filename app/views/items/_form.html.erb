@@ -1,5 +1,5 @@
 <div class="form-group">
-  <%= form_for [user, item] do |f| %>
+  <%= form_for [user, item], remote: true do |f| %>
     <% if item.errors.any? %>
       <div class="alert alert-danger">
         <h4><%= pluralize(item.errors.count, "error") %>.</h4>

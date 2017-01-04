@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :path_prefix => 'd'
   resources :users, :only => [:show] do
-    resources :items, :only => [:new, :create]
+    resources :items, :only => [:new, :create, :destroy]
   end
   root to: "users#show"
 

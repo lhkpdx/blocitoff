@@ -16,6 +16,17 @@ class ItemsController < ApplicationController
     @item = Item.new(:user=>@user)
   end
 
+  def destroy
+    @item = Item.find(params[:id])
+      if @item.destroy
+         flash[:notice] = "\"#{@item.name}\" was removed because you nailed it!"
+         redirect_to root_path
+       else
+         flash.now[:alert] = "There was an error deleting the item."
+         render :show
+       end
+   end
+
   private
 
   def item_params
