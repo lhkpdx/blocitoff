@@ -1,23 +1,24 @@
 <div class="form-group">
-  <%= form_for [user, item], remote: true do |f| %>
-    <% if item.errors.any? %>
+  <%= form_for [@user, @item] do |f| %>
+    <% if @item.errors.any? %>
       <div class="alert alert-danger">
-        <h4><%= pluralize(item.errors.count, "error") %>.</h4>
+        <h4><%= pluralize(@item.errors.count, "error") %>.</h4>
         <ul>
-          <% item.errors.full_messages.each do |msg| %>
+          <% @item.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
       </div>
-    <% end %>
-
-    <%= form_group_tag(item.errors[:name]) do %>
-        <%= f.label :name, { autofocus: true } %>
-        <%= f.text_field :name, class: 'form-control', placeholder: "Enter to-do item" %>
+    <% end %><br>
+  <div class = "container">
+    <%= form_group_tag(@item.errors[:name]) do %>
+        <%= f.label :Add_an_item, { autofocus: true } %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "add your item here" %>
     <% end %>
 
     <div class="form-group">
-      <%= f.submit "Save", class: 'btn btn-success' %>
+      <%= f.submit "Save it", class: 'btn btn-success' %>
    </div>
   <% end %>
+</div>
 </div>

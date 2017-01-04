@@ -1,6 +1,7 @@
-<h2>Profile page for <%= @user.username %></h2>
+<h2>ToDo List for <%= @user.username %></h2>
 <div class="container"
   <div class="row">
+    
     <ul>
       <li>You've been a member since <%= time_ago_in_words(@user.created_at) %> ago.</li>
       <li>Your email address on file is:  <b><%= @user.email %></li></b>
@@ -10,7 +11,7 @@
 
 <div class="container"
   <div class="row">
-    <%= link_to "Create item", new_user_item_path(@user, @item) %>
+    <%= render 'items/form', locals: { user: @user, item: @item } %>
   </div>
 </div>
 <br>

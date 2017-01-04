@@ -1,13 +1,15 @@
-<div class="col-md-6">
-   <table class="table">
+<div class="col-md-8">
+   <table class="table table-condensed">
      <tr>
-       <th>Click to remove</th>
+       <th>Click checkmark<br> to complete</th>
        <th>Name of Item</th>
+       <th>Date added</th>
       </tr>
     <% @items.each do |item| %>
       <tr>
-        <td><%= link_to "   ", user_item_path(item.user, item), remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %></td>
-        <td><%= item.name.capitalize %></td>
+          <td><%= link_to "   ", user_item_path(item.user, item), remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %></td>
+          <td><%= item.name.capitalize %></td>
+          <td><%= item.created_at.strftime("%B, %e, %Y") %>
       </tr>
    <% end %>
  </table>
