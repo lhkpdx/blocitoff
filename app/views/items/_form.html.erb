@@ -1,20 +1,23 @@
-<%= form_for @item do |f| %>
+<div class="form-group">
+  <%= form_for [user, item] do |f| %>
+    <% if item.errors.any? %>
+      <div class="alert alert-danger">
+        <h4><%= pluralize(item.errors.count, "error") %>.</h4>
+        <ul>
+          <% item.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <% if @item.errors.any? %>
-    <div class="alert alert-danger">
-      <h4><%= pluralize(@item.errors.count, "error") %>.</h4>
-      <ul>
-        <% @item.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
+    <%= form_group_tag(item.errors[:name]) do %>
+        <%= f.label :name, { autofocus: true } %>
+        <%= f.text_field :name, class: 'form-control', placeholder: "Enter to-do item" %>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.submit "Save", class: 'btn btn-success' %>
+   </div>
   <% end %>
-
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: 'form-control', placeholder: "Enter your to-do item" %>
-  </div>
-    <%= f.submit "Save", class: 'btn btn-success' %>
-  </div>
-<% end %>
+</div>

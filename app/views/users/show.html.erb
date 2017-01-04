@@ -3,7 +3,7 @@
   <div class="row">
     <ul>
       <li>You've been a member since <%= time_ago_in_words(@user.created_at) %> ago.</li>
-      <li>Your current email address:  <%= @user.email %></li>
+      <li>Your email address on file is:  <b><%= @user.email %></li></b>
     </ul>
   </div>
 </div>
@@ -16,8 +16,6 @@
 <br>
 <div class="container"
   <div class="row">
-    <% @items.each do |item| %>
-    <%= item.name %><br>
-    <% end %>
+    <%= render 'items/item' %>
   </div>
 </div>
