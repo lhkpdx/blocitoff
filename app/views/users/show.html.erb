@@ -7,3 +7,17 @@
     </ul>
   </div>
 </div>
+
+<div class="container"
+  <div class="row">
+    <%= link_to "Create item", new_user_item_path(@user, @item) %>
+  </div>
+</div>
+<br>
+<div class="container"
+  <div class="row">
+    <% @items.each do |item| %>
+    <%= item.name %><br>
+    <% end %>
+  </div>
+</div>
