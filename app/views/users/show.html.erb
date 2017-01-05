@@ -1,21 +1,18 @@
-<h2>ToDo List for <%= @user.username %></h2>
 <div class="container"
   <div class="row">
-    <ul>
-      <li>You've been a member since <%= time_ago_in_words(@user.created_at) %> ago.</li>
-      <li>Your email address on file is:  <b><%= @user.email %></li></b>
-    </ul>
-  </div>
-</div>
-
-<div class="container"
-  <div class="row">
+    <div class="ID">
+      <%= @user.username %>'s tasks:
+    </div>
     <%= render 'items/form', locals: { user: @user, item: @item } %>
   </div>
-</div>
-<br>
-<div class="container"
+  <div class="row">
+    <ul>
+      <li><b>Items older than 7 days will automatically be deleted from your list.</b></li>
+      <li>Items in <span class="red">red</span> need your attention <b>TODAY</b>.</li>
+    </ul>
+  </div>
   <div class="row">
     <%= render 'items/item' %>
   </div>
+</div>
 </div>

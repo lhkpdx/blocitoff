@@ -1,10 +1,11 @@
 class ItemsController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def create
     @user = current_user
     @item = @user.items.build(item_params)
     if @item.save
-      redirect_to root_path, notice: "Your to-do item was saved successfully"
+      redirect_to root_path, notice: "Saved successfully"
     else
       flash.now[:alert] = "Error creating to-do item.  Please try again"
       render :new
@@ -19,7 +20,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
       if @item.destroy
-         flash[:notice] = "\"#{@item.name}\" was removed because you nailed it!"
+         flash[:notice] = "Deleted successfully"
          redirect_to root_path
        else
          flash.now[:alert] = "There was an error deleting the item."

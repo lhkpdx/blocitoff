@@ -28,7 +28,7 @@ testuser = User.create!(
    user: users.sample,
    name: "Read "+ Faker::Book.title
    )
-   item.update_attribute(:created_at, rand(10.minutes .. 7.days).ago)
+   item.update_attribute(:created_at, rand(10.minutes .. 40.days).ago)
  end
 
  events = Item.all

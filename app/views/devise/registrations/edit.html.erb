@@ -1,4 +1,7 @@
-<h2>Edit Account for  <%= resource_name.to_s.humanize %>: <%= current_user.username %></h2>
+<h3>Edit Account for  <%= resource_name.to_s.humanize %>: <%= current_user.username %></h3>
+
+Member since: <%= time_ago_in_words(@user.created_at) %> ago<br />
+Email address: <%= @user.email %><br /><br />
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
