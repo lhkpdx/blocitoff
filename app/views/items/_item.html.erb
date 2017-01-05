@@ -1,16 +1,22 @@
 <div class="col-md-8">
    <table class="table table-condensed">
      <tr>
-       <th>Click checkmark<br> to complete</th>
-       <th>Name of Item</th>
-       <th>Date added</th>
+       <th>Click checkmark<br> to remove</th>
+       <th><br>Name of Item</th>
+       <th><br>Time remaining</th>
+       <th><br>Date added</th>
       </tr>
-    <% @items.each do |item| %>
-      <tr>
-          <td><%= link_to "   ", user_item_path(item.user, item), remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %></td>
+    <% @items.order(created_at: :asc).each do |item| %>
+      <% if warning(item) %>
+        <tr class="red">
+      <% else %>
+        <tr class="">
+      <% end %>
+          <td><center><%= link_to "   ", user_item_path(item.user, item), remote: true, method: :delete, class: 'glyphicon glyphicon-ok' %></center></td>
           <td><%= item.name.capitalize %></td>
-          <td><%= item.created_at.strftime("%B, %e, %Y") %>
+          <td><%= time_remaining(item) %></td>
+          <td><%= item.created_at.strftime("%B, %e") %>
       </tr>
-   <% end %>
+     <% end %>
  </table>
 </div>

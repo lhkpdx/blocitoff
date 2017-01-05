@@ -1,7 +1,6 @@
 <h2>ToDo List for <%= @user.username %></h2>
 <div class="container"
   <div class="row">
-    
     <ul>
       <li>You've been a member since <%= time_ago_in_words(@user.created_at) %> ago.</li>
       <li>Your email address on file is:  <b><%= @user.email %></li></b>
